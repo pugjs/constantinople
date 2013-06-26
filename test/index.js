@@ -10,6 +10,9 @@ describe('isConstant(src)', function () {
   it('handles "/[a-z]/.test(\'a\')"', function () {
     assert(constaninople.isConstant('/[a-z]/.test(\'a\')') === true)
   })
+  it('handles "{\'class\': [(\'data\')]}"', function () {
+    assert(constaninople.isConstant('{\'class\': [(\'data\')]}') === true)
+  })
   it('handles "Math.random()"', function () {
     assert(constaninople.isConstant('Math.random()') === false)
   })
@@ -25,6 +28,9 @@ describe('toConstant(src)', function () {
   })
   it('handles "/[a-z]/.test(\'a\')"', function () {
     assert(constaninople.toConstant('/[a-z]/.test(\'a\')') === true)
+  })
+  it('handles "{\'class\': [(\'data\')]}"', function () {
+    assert.deepEqual(constaninople.toConstant('{\'class\': [(\'data\')]}'), {'class': ['data']})
   })
   it('handles "Math.random()"', function () {
     try {
