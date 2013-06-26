@@ -2,11 +2,12 @@
 
 var uglify = require('uglify-js')
 
-var lastSRC = 'null'
+var lastSRC = '(null)'
 var lastRes = true
 
 module.exports = isConstant
 function isConstant(src) {
+  src = '(' + src + ')'
   if (lastSRC === src) return lastRes
   lastSRC = src
   try {
