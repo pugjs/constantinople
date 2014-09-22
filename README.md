@@ -1,6 +1,6 @@
 # constantinople
 
-Determine whether a JavaScript expression evaluates to a constant (using UglifyJS).  Here it is assumed to be safe to underestimate how constant something is.
+Determine whether a JavaScript expression evaluates to a constant (using acorn).  Here it is assumed to be safe to underestimate how constant something is.
 
 [![Build Status](https://img.shields.io/travis/ForbesLindesay/constantinople/master.svg)](https://travis-ci.org/ForbesLindesay/constantinople)
 [![Dependency Status](https://img.shields.io/gemnasium/ForbesLindesay/constantinople.svg)](https://gemnasium.com/ForbesLindesay/constantinople)
