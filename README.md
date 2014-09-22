@@ -4,7 +4,7 @@ Determine whether a JavaScript expression evaluates to a constant (using UglifyJ
 
 [![Build Status](https://img.shields.io/travis/ForbesLindesay/constantinople/master.svg)](https://travis-ci.org/ForbesLindesay/constantinople)
 [![Dependency Status](https://img.shields.io/gemnasium/ForbesLindesay/constantinople.svg)](https://gemnasium.com/ForbesLindesay/constantinople)
-[![NPM version](https://img.shields.io/npm/v/constantinople.svg)](http://badge.fury.io/js/constantinople)
+[![NPM version](https://img.shields.io/npm/v/constantinople.svg)](https://www.npmjs.org/package/constantinople)
 
 ## Installation
 
