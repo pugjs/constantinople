@@ -4,7 +4,7 @@
   "description": "Determine whether a JavaScript expression evaluates to a constant (using UglifyJS)",
   "keywords": [],
   "dependencies": {
-    "acorn-globals": "^1.0.0"
+    "acorn": "^2.1.0"
   },
   "devDependencies": {
     "mocha": "*"
