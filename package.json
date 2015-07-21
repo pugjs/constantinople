@@ -1,6 +1,6 @@
 {
   "name": "constantinople",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Determine whether a JavaScript expression evaluates to a constant (using UglifyJS)",
   "keywords": [],
   "dependencies": {
