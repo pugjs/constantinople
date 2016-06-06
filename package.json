@@ -1,10 +1,14 @@
 {
   "name": "constantinople",
   "version": "3.0.2",
-  "description": "Determine whether a JavaScript expression evaluates to a constant (using UglifyJS)",
-  "keywords": [],
+  "description": "Determine whether a JavaScript expression evaluates to a constant (using acorn)",
+  "keywords": [
+    "acorn",
+    "ast",
+    "tooling"
+  ],
   "dependencies": {
-    "acorn": "^2.1.0"
+    "acorn": "^3.1.0"
   },
   "devDependencies": {
     "mocha": "*"
