@@ -1,6 +1,6 @@
 {
   "name": "constantinople",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "description": "Determine whether a JavaScript expression evaluates to a constant (using acorn)",
   "keywords": [
     "acorn",
