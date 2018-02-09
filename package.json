@@ -10,10 +10,10 @@
     "tooling"
   ],
   "dependencies": {
+    "@types/babel-types": "^7.0.0",
     "@types/babylon": "^6.16.2",
-    "babel-types": "^6.16.0",
-    "babylon": "^6.18.0",
-    "babylon-walk": "^1.0.2"
+    "babel-types": "^6.26.0",
+    "babylon": "^6.18.0"
   },
   "devDependencies": {
     "@types/node": "^9.4.4",
