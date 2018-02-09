@@ -28,15 +28,15 @@ describe('isConstant(src)', function() {
   it('handles "(function () { while (true); return 10; }())"', function() {
     assert(
       constaninople.isConstant(
-        '(function () { while (true); return 10; }())',
-      ) === false,
+        '(function () { while (true); return 10; }())'
+      ) === false
     );
   });
   it('handles "({}).toString.constructor("console.log(1)")()"', function() {
     assert(
       constaninople.isConstant(
-        '({}).toString.constructor("console.log(1)")()',
-      ) === false,
+        '({}).toString.constructor("console.log(1)")()'
+      ) === false
     );
   });
 });
@@ -80,7 +80,7 @@ describe('toConstant(src)', function() {
     }
     assert(
       false,
-      '(function () { while (true); return 10; }()) should result in an error',
+      '(function () { while (true); return 10; }()) should result in an error'
     );
   });
 });
