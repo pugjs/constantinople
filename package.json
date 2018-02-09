@@ -1,6 +1,8 @@
 {
   "name": "constantinople",
   "version": "3.1.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "description": "Determine whether a JavaScript expression evaluates to a constant (using acorn)",
   "keywords": [
     "acorn",
@@ -8,14 +10,20 @@
     "tooling"
   ],
   "dependencies": {
+    "@types/babylon": "^6.16.2",
     "babel-types": "^6.16.0",
-    "babylon-walk": "^1.0.2",
-    "is-expression-babylon": "^1.1.0"
+    "babylon": "^6.18.0",
+    "babylon-walk": "^1.0.2"
   },
   "devDependencies": {
-    "mocha": "*"
+    "@types/node": "^9.4.4",
+    "mocha": "*",
+    "typescript": "^2.7.1"
   },
   "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "pretest": "npm run build",
     "test": "mocha -R spec"
   },
   "repository": {
