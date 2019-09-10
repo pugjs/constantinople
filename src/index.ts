@@ -31,6 +31,8 @@ export function expressionToConstant(
           }
         } else if (b.isExpression(element)) {
           result.push(toConstant(element));
+        } else {
+          constant = false;
         }
       }
       return result;
@@ -56,6 +58,8 @@ export function expressionToConstant(
           }
         } else if (b.isExpression(arg)) {
           args.push(toConstant(arg));
+        } else {
+          constant = false;
         }
       }
       if (!constant) return;
@@ -156,6 +160,8 @@ export function expressionToConstant(
             const value = toConstant(property.value);
             if (!constant) return;
             result[key] = value;
+          } else {
+            constant = false;
           }
         } else if (b.isObjectMethod(property)) {
           constant = false;
