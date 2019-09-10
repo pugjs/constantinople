@@ -16,7 +16,7 @@ export function expressionToConstant(
   options: ExpressionToConstantOptions = {},
 ): {constant: true; result: any} | {constant: false; result?: void} {
   let constant = true;
-  function toConstant(expression: b.Expression): any {
+  function toConstant(expression: b.CallExpression['callee']): any {
     if (!constant) return;
     if (b.isArrayExpression(expression)) {
       const result = [];
