@@ -3,9 +3,9 @@
   "version": "3.1.2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "description": "Determine whether a JavaScript expression evaluates to a constant (using acorn)",
+  "description": "Determine whether a JavaScript expression evaluates to a constant",
   "keywords": [
-    "acorn",
+    "constant",
     "ast",
     "tooling"
   ],
