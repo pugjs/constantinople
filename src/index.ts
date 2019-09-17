@@ -16,7 +16,7 @@ export function expressionToConstant(
   options: ExpressionToConstantOptions = {},
 ): {constant: true; result: any} | {constant: false; result?: void} {
   let constant = true;
-  function toConstant(expression: b.CallExpression['callee']): any {
+  function toConstant(expression: b.Expression): any {
     if (!constant) return;
     if (b.isArrayExpression(expression)) {
       const result = [];
@@ -72,8 +72,8 @@ export function expressionToConstant(
         const member = expression.callee.computed
           ? toConstant(expression.callee.property)
           : b.isIdentifier(expression.callee.property)
-            ? expression.callee.property.name
-            : undefined;
+          ? expression.callee.property.name
+          : undefined;
         if (member === undefined && !expression.callee.computed) {
           constant = false;
         }
@@ -82,6 +82,10 @@ export function expressionToConstant(
           return object[member].apply(object, args);
         }
       } else {
+        if (!b.isExpression(expression.callee)) {
+          constant = false;
+          return;
+        }
         const callee = toConstant(expression.callee);
         if (!constant) return;
         return callee.apply(null, args);
@@ -120,8 +124,8 @@ export function expressionToConstant(
       const member = expression.computed
         ? toConstant(expression.property)
         : b.isIdentifier(expression.property)
-          ? expression.property.name
-          : undefined;
+        ? expression.property.name
+        : undefined;
       if (member === undefined && !expression.computed) {
         constant = false;
       }
@@ -148,10 +152,10 @@ export function expressionToConstant(
           const key = property.computed
             ? toConstant(property.key)
             : b.isIdentifier(property.key)
-              ? property.key.name
-              : b.isStringLiteral(property.key)
-                ? property.key.value
-                : undefined;
+            ? property.key.name
+            : b.isStringLiteral(property.key)
+            ? property.key.value
+            : undefined;
           if (!key || key[0] === '_') {
             constant = false;
           }

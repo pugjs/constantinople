@@ -6,7 +6,7 @@
     {
       "files": "*.js",
       "options": {
-        "trailingComma": "es5",
+        "trailingComma": "es5"
       }
     }
   ]
