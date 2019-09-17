@@ -3,17 +3,15 @@
   "version": "3.1.2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "description": "Determine whether a JavaScript expression evaluates to a constant (using acorn)",
+  "description": "Determine whether a JavaScript expression evaluates to a constant",
   "keywords": [
-    "acorn",
+    "constant",
     "ast",
     "tooling"
   ],
   "dependencies": {
-    "@types/babel-types": "^7.0.0",
-    "@types/babylon": "^6.16.2",
-    "babel-types": "^6.26.0",
-    "babylon": "^6.18.0"
+    "@babel/types": "^7.6.1",
+    "@babel/parser": "^7.6.0"
   },
   "devDependencies": {
     "@types/node": "^9.4.4",

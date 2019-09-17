@@ -4,12 +4,12 @@ lib-cov
 *.csv
 *.dat
 *.out
+*.patch
 *.pid
 *.gz
 pids
 logs
 results
-npm-debug.log
 node_modules
 lib
 yarn.lock

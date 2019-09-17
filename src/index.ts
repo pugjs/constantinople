@@ -1,22 +1,22 @@
-import {parseExpression, BabylonOptions} from 'babylon';
-import * as b from 'babel-types';
+import {parseExpression, ParserOptions} from '@babel/parser';
+import * as b from '@babel/types';
 import binaryOperation from './binaryOperation';
 
-export {BabylonOptions};
+export {ParserOptions as BabylonOptions};
 
 export interface ExpressionToConstantOptions {
   constants?: any;
 }
 
 export interface Options extends ExpressionToConstantOptions {
-  babylon?: BabylonOptions;
+  babylon?: ParserOptions;
 }
 export function expressionToConstant(
   expression: b.Expression,
   options: ExpressionToConstantOptions = {},
 ): {constant: true; result: any} | {constant: false; result?: void} {
   let constant = true;
-  function toConstant(expression: b.Expression): any {
+  function toConstant(expression: b.CallExpression['callee']): any {
     if (!constant) return;
     if (b.isArrayExpression(expression)) {
       const result = [];
@@ -29,8 +29,10 @@ export function expressionToConstant(
           } else {
             result.push(...spread);
           }
-        } else {
+        } else if (b.isExpression(element)) {
           result.push(toConstant(element));
+        } else {
+          constant = false;
         }
       }
       return result;
@@ -54,8 +56,10 @@ export function expressionToConstant(
           } else {
             args.push(...spread);
           }
-        } else {
+        } else if (b.isExpression(arg)) {
           args.push(toConstant(arg));
+        } else {
+          constant = false;
         }
       }
       if (!constant) return;
@@ -152,9 +156,13 @@ export function expressionToConstant(
             constant = false;
           }
           if (!constant) return;
-          const value = toConstant(property.value);
-          if (!constant) return;
-          result[key] = value;
+          if (b.isExpression(property.value)) {
+            const value = toConstant(property.value);
+            if (!constant) return;
+            result[key] = value;
+          } else {
+            constant = false;
+          }
         } else if (b.isObjectMethod(property)) {
           constant = false;
         } else if (b.isSpreadProperty(property)) {
@@ -316,7 +324,7 @@ let lastWasConstant = false;
 export function isConstant(
   src: string,
   constants: any = EMPTY_OBJECT,
-  options: BabylonOptions = EMPTY_OBJECT,
+  options: ParserOptions = EMPTY_OBJECT,
 ) {
   if (
     lastSrc === src &&
@@ -340,7 +348,7 @@ export function isConstant(
 export function toConstant(
   src: string,
   constants: any = EMPTY_OBJECT,
-  options: BabylonOptions = EMPTY_OBJECT,
+  options: ParserOptions = EMPTY_OBJECT,
 ) {
   if (!isConstant(src, constants, options)) {
     throw new Error(JSON.stringify(src) + ' is not constant.');
