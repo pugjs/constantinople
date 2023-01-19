@@ -169,7 +169,7 @@ export function expressionToConstant(
           }
         } else if (b.isObjectMethod(property)) {
           constant = false;
-        } else if (b.isSpreadProperty(property)) {
+        } else if (b.isSpreadElement(property)) {
           const argument = toConstant(property.argument);
           if (!argument) constant = false;
           if (!constant) return;
